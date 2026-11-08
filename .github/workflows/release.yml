@@ -1,0 +1,38 @@
+name: Publish macOS release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate release version
+        shell: bash
+        run: |
+          version="$(tr -d '\n\r' < VERSION)"
+          if [[ "$GITHUB_REF_TYPE" == "tag" && "$GITHUB_REF_NAME" != "v$version" ]]; then
+            printf 'Tag does not match VERSION.\n' >&2
+            exit 1
+          fi
+      - name: Build release (no runtime tests)
+        run: ./scripts/release.sh
+      - name: Upload or create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          version="$(tr -d '\n\r' < VERSION)"
+          tag="v$version"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            printf 'Release %s already exists; keeping its published assets.\n' "$tag"
+          else
+            gh release create "$tag" dist/*.zip dist/*.dmg dist/SHA256SUMS.txt \
+              --target "$GITHUB_SHA" --title "Padlock for Mac $version" --notes-file docs/RELEASE-NOTES.md
+          fi

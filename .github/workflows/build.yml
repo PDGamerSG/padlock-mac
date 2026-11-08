@@ -1,0 +1,26 @@
+name: Build macOS app
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build universal app and disk image (no runtime tests)
+        run: ./scripts/release.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Padlock-macOS-universal
+          path: |
+            dist/*.zip
+            dist/*.dmg
+            dist/SHA256SUMS.txt
+          if-no-files-found: error

@@ -1,0 +1,31 @@
+Padlock for Mac — macOS 13 or later, Apple silicon and Intel
+
+Drag Padlock.app to Applications, then open it from Applications.
+
+This initial build is ad-hoc signed and is not notarized. If macOS blocks it,
+attempt to open the app once, then open System Settings > Privacy & Security
+and use Open Anyway for Padlock.
+
+In Padlock Settings, allow Accessibility and Input Monitoring. Enable Padlock
+in both system privacy lists. Quit and reopen the app if macOS requests it.
+Close Settings to enable the sequences and inactivity timer.
+
+Option + R: Restricted
+Option + L: Locked
+Type a s d f without modifiers: Default (unlocked)
+Control + Option + Command + Escape: emergency return to Default
+
+The menu bar icon opens Settings, Help, and Quit while unlocked. The emergency
+shortcut is fixed, even if you customize the other sequences.
+
+Padlock is an input utility, not a replacement for macOS Lock Screen.
+macOS controls protected input, reserved shortcuts, and power/Touch ID.
+
+The app has been compiled and packaged, but runtime testing was deferred
+at the request of the user. The next-session manual checklist is bundled
+inside Padlock.app/Contents/Resources/MANUAL-TESTING.md.
+
+Source and releases: https://github.com/PDGamerSG/padlock-mac
+Original Padlock: https://github.com/takuyakanbr/padlock
+BSD 3-Clause License; original copyright 2017 Daniel Teo.
+Mac port copyright 2026 PDGamerSG and contributors.
