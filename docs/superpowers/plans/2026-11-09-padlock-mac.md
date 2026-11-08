@@ -34,7 +34,7 @@ ServiceManagement, Swift Package Manager, GitHub Actions.
   package and ad-hoc sign, and inspect each artifact without launching it.
 - [x] Write README, feature parity, architecture, privacy and manual testing
   docs. Preserve upstream license; publish public source and release downloads.
-- [ ] Confirm remote visibility, commit and tag, asset names and checksums.
+- [x] Confirm remote visibility, commit and tag, asset names and checksums.
 
 Verification records belong in `docs/BUILD-VERIFICATION.md`; runtime checks
 remain unchecked in `docs/MANUAL-TESTING.md` for the user's next session.
