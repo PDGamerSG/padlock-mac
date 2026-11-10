@@ -1,8 +1,10 @@
 # Manual testing checklist
 
-**Not executed.** The initial implementation session deliberately did not launch
-the app, request permissions, simulate input, or run automated/runtime tests.
-Use this checklist in the next testing session. Record the macOS version,
+The initial build session deferred testing. Runtime verification was subsequently
+started on 2026-11-10–11; see the [dated test report](TEST-REPORT-2026-11-11.md)
+for the executed automated/live checks, results, and remaining gaps. This manual
+checklist remains unchecked so unexecuted physical-device and system-lifecycle
+checks are not confused with synthetic-event coverage. Record macOS version,
 hardware, keyboard layout, and app version when reporting an issue.
 
 ## Install and permissions

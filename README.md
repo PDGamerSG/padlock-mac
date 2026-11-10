@@ -147,10 +147,16 @@ they do not execute runtime tests or interact with system input permissions.
 
 ## Verification status
 
-The initial release is compiled and packaged for both architectures. Runtime,
-permission, UI, and device testing are **deferred at the request of the user**.
-No claim of runtime validation is made. The checklist is ready for the next
-testing session.
+The initial release was built with testing deferred. Subsequent verification
+passed 28 configuration/persistence tests on arm64 and under Rosetta, 30 live
+input checks, 25 repeated held-key cycles, and 14 native UI checks. **Full release
+sign-off is incomplete:** the desktop locked before live idle testing finished,
+and an earlier intermittent held-key observation needs continued monitoring.
+See the [dated test report](docs/TEST-REPORT-2026-11-11.md) for evidence and limits.
+
+Run `./scripts/test.sh` for the configuration/persistence suite. Interactive
+tests are documented in [Tests/README.md](Tests/README.md); they require an
+unlocked desktop and can briefly block input.
 
 ## License and credits
 

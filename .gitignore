@@ -5,3 +5,4 @@ dist/
 .swiftpm/
 *.xcuserstate
 *.dSYM/
+__pycache__/
